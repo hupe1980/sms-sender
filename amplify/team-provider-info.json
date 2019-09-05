@@ -1,0 +1,19 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "sms-sender-20190727102140-authRole",
+            "UnauthRoleArn": "arn:aws:iam::741759823656:role/sms-sender-20190727102140-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::741759823656:role/sms-sender-20190727102140-authRole",
+            "Region": "eu-central-1",
+            "DeploymentBucketName": "sms-sender-20190727102140-deployment",
+            "UnauthRoleName": "sms-sender-20190727102140-unauthRole",
+            "StackName": "sms-sender-20190727102140",
+            "StackId": "arn:aws:cloudformation:eu-central-1:741759823656:stack/sms-sender-20190727102140/8f65a280-b047-11e9-ae5e-0ac7c3b3e9ea"
+        },
+        "categories": {
+            "auth": {
+                "cognito74f0cca3": {}
+            }
+        }
+    }
+}
