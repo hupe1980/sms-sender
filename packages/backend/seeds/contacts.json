@@ -1,0 +1,42 @@
+[
+    {
+        "contactId": "1",
+        "name": "John Doe",
+        "phone": "134353523"
+    },
+    {
+        "contactId": "2",
+        "name": "Tom Muller",
+        "phone": "13343423"
+    },
+    {
+        "contactId": "3",
+        "name": "Heinz Ketchup",
+        "phone": "1235453453"
+    },
+    {
+        "contactId": "4",
+        "name": "Paul Dean",
+        "phone": "143423"
+    },
+    {
+        "contactId": "5",
+        "name": "Thomas Müller",
+        "phone": "3435123"
+    },
+    {
+        "contactId": "6",
+        "name": "Mario Götze",
+        "phone": "1545423"
+    },
+    {
+        "contactId": "7",
+        "name": "Manuell Neuer",
+        "phone": "54545123"
+    },
+    {
+        "contactId": "8",
+        "name": "Philipp Lahm",
+        "phone": "43443123"
+    }
+]

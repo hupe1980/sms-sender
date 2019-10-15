@@ -1,44 +1,24 @@
 {
-  "name": "sms-sender",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@material-ui/core": "^4.3.3",
-    "@material-ui/icons": "^4.2.1",
-    "@wapps/react-scroll": "^0.0.8",
-    "amplify-material-ui": "^0.0.17",
-    "aws-amplify": "^1.1.36",
-    "clsx": "^1.0.4",
-    "css-mediaquery": "^0.1.2",
-    "history": "^4.9.0",
-    "pluralize": "^8.0.0",
-    "react": "^16.9.0",
-    "react-admin": "^3.0.0-alpha.3",
-    "react-dom": "^16.9.0",
-    "react-router-dom": "^5.0.1"
-  },
+  "name": "root",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "lerna bootstrap",
+    "all:outdated": "npm outdated; lerna exec --no-bail -- npm outdated",
+    "all:upgrade": "npm upgrade; lerna exec --no-bail -- npm upgrade"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hupe1980/sms-sender.git"
   },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hupe1980/sms-sender/issues"
+  },
+  "homepage": "https://github.com/hupe1980/sms-sender#readme",
   "devDependencies": {
-    "eslint-config-prettier": "^6.1.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "prettier": "^1.18.2",
-    "react-scripts": "3.1.1"
+    "lerna": "^3.17.0"
   }
 }
