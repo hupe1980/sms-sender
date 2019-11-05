@@ -5,6 +5,7 @@
   "description": "",
   "scripts": {
     "offline": "sls offline start",
+    "deploy": "sls deploy",
     "lint": "echo 'No linter'"
   },
   "devDependencies": {
