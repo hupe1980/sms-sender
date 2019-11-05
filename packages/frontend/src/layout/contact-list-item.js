@@ -1,12 +1,14 @@
 import React from 'react';
 import { ListItem, ListItemText } from '@material-ui/core';
 import { useUpdate, useRefresh } from 'react-admin';
+import { useAuthContext } from 'amplify-material-ui';
 
 export default function ContactListItem({ contact, onClick }) {
     const refresh = useRefresh();
+     const { authData } = useAuthContext();
 
     const conversations = new Set(contact.conversations || []);
-    conversations.add('abc'); //sub
+    conversations.add(authData.username); 
     const diff = { ...contact, conversations: Array.from(conversations) };
     
     const [update] = useUpdate('contacts', contact.id, diff, contact, {

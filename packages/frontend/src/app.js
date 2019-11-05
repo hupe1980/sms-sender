@@ -5,10 +5,9 @@ import { withAuthenticator, Greetings } from 'amplify-material-ui';
 
 import awsconfig from './aws-exports';
 
-import amplifyRestProvider, {
-    parseResponse,
-    buildDataRequest,
-} from './data-provider';
+import { amplifyRestDataProvider } from 'ra-data-amplify-rest';
+
+import { customResponseParser, customRequestBuilder } from './data-provider';
 
 import conversationReducer from './conversation-reducer';
 
@@ -27,10 +26,10 @@ function App() {
         <Admin
             authProvider={authProvider}
             customReducers={{ conversation: conversationReducer }}
-            dataProvider={amplifyRestProvider({
+            dataProvider={amplifyRestDataProvider({
                 apiName: awsconfig.aws_cloud_logic_custom[0].name,
-                parseResponse,
-                buildDataRequest,
+                responseParser: customResponseParser,
+                requestBuilder: customRequestBuilder,
             })}
             layout={Layout}
             history={history}

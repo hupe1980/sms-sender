@@ -1,12 +1,14 @@
 import React from 'react';
 import {
-    TextField,
     Button,
     Box,
     Typography,
     makeStyles,
 } from '@material-ui/core';
 import { useCreate, useRefresh } from 'react-admin';
+import { Formik, Field, Form } from 'formik';
+import { TextField } from 'formik-material-ui';
+import { useAuthContext } from 'amplify-material-ui';
 
 const useStyles = makeStyles(theme => ({
     form: {
@@ -21,23 +23,20 @@ const useStyles = makeStyles(theme => ({
 
 export default function MessageForm({ contact }) {
     const classes = useStyles();
-    const [message, setMessage] = React.useState('');
     const refresh = useRefresh();
     const [create] = useCreate('messages');
+    const { authData } = useAuthContext();
 
-    const handleChange = event => setMessage(event.target.value);
-
-    const handleSubmit = async event => {
-        event.preventDefault();
-        
+    const submit = async (message) => {
         const { contactId, name, phone } = contact;
+        const from = authData.username;
+
+        const data = { message, contactId, name, phone, from }; 
         
-        create(
-            null,
-            { data: { message, contactId, name, phone } },
+        await create(
+            { payload: { data } },
             {
                 onSuccess: () => {
-                    setMessage('');
                     refresh();
                 },
                 undoable: false,
@@ -45,35 +44,44 @@ export default function MessageForm({ contact }) {
         );
     };
 
-    const numberOfChars = message.length;
-
     return (
-        <form className={classes.form} noValidate onSubmit={handleSubmit}>
-            <TextField
-                id="message"
-                label="Message"
-                name="message"
-                multiline
-                fullWidth
-                margin="normal"
-                variant="outlined"
-                value={message}
-                onChange={handleChange}
-            />
-            <Typography color="textSecondary">
-                Die Nachricht besteht aus {numberOfChars} Zeichen.
-            </Typography>
-            <Box display="flex" justifyContent="flex-end">
-                <Button
-                    type="submit"
-                    variant="contained"
-                    color="primary"
-                    disabled={numberOfChars === 0}
-                    className={classes.submit}
-                >
-                    Send message
-                </Button>
-            </Box>
-        </form>
+        <Formik
+            initialValues={{ message: '' }}
+            onSubmit={async ({ message }, { setSubmitting, resetForm }) => {
+                await submit(message);
+                resetForm();
+                setSubmitting(false);
+            }}
+        >
+            {({ submitForm, isValid, values }) => (
+                <Form className={classes.form}>
+                    <Field
+                        id="message"
+                        label="Message"
+                        name="message"
+                        multiline
+                        fullWidth
+                        margin="normal"
+                        variant="outlined"
+                        component={TextField}
+                    />
+                    <Typography color="textSecondary">
+                        Die Nachricht besteht aus {values.message.length}{' '}
+                        Zeichen.
+                    </Typography>
+                    <Box display="flex" justifyContent="flex-end">
+                        <Button
+                            onClick={submitForm}
+                            disabled={!isValid}
+                            variant="contained"
+                            color="primary"
+                            className={classes.submit}
+                        >
+                            Send message
+                        </Button>
+                    </Box>
+                </Form>
+            )}
+        </Formik>
     );
 }

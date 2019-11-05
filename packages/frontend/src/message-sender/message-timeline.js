@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
     cardContent: {
         display: 'flex',
         overflow: 'auto',
-        scrollBehavior: 'smooth'
+        scrollBehavior: 'smooth',
     },
 }));
 
@@ -48,12 +48,12 @@ export default function MessageTimeline({ contact }) {
     const { contactId, name, phone } = contact;
 
     useEffect(() => {
-       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' }); 
+        messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }, [messages]);
 
     useEffect(() => {
         const fetchConversations = async () => {
-            const { data } = await dataProvider('GET_LIST', 'messages', {
+            const { data } = await dataProvider.getList('messages', {
                 filter: { contactId },
                 sort: { field: 'createdAt', order: 'DESC' },
                 pagination: { page: 1, perPage: 50 },
@@ -73,7 +73,7 @@ export default function MessageTimeline({ contact }) {
     };
 
     const renderEvents = () =>
-        messages.map(({message, createdAt, from, id}) => (
+        messages.map(({ message, createdAt, from, id }) => (
             <TimelineEvent
                 key={id}
                 title={`Nachricht von ${from}`}

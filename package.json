@@ -19,6 +19,6 @@
   },
   "homepage": "https://github.com/hupe1980/sms-sender#readme",
   "devDependencies": {
-    "lerna": "^3.17.0"
+    "lerna": "^3.18.3"
   }
 }

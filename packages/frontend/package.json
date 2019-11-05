@@ -3,17 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.5.1",
+    "@material-ui/core": "^4.6.0",
     "@material-ui/icons": "^4.5.1",
     "@wapps/react-scroll": "^0.0.8",
-    "amplify-material-ui": "^0.0.20",
-    "aws-amplify": "^1.2.2",
+    "amplify-material-ui": "^0.0.24",
+    "aws-amplify": "^1.2.4",
     "clsx": "^1.0.4",
+    "formik": "^2.0.3",
+    "formik-material-ui": "^1.0.0",
     "history": "^4.10.1",
-    "ra-data-amplify-rest": "0.0.4",
-    "react": "^16.10.2",
-    "react-admin": "^3.0.0-beta.0",
-    "react-dom": "^16.10.2",
+    "ra-data-amplify-rest": "0.0.9",
+    "react": "^16.11.0",
+    "react-admin": "^3.0.0-beta.5",
+    "react-dom": "^16.11.0",
+    "react-is-mounted-hook": "^1.0.2",
     "react-router-dom": "^5.1.2"
   },
   "scripts": {
@@ -37,7 +40,7 @@
   },
   "devDependencies": {
     "cross-env": "^6.0.3",
-    "eslint-config-prettier": "^6.4.0",
+    "eslint-config-prettier": "^6.5.0",
     "eslint-plugin-prettier": "^3.1.1",
     "prettier": "^1.18.2",
     "react-scripts": "3.2.0"

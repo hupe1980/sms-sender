@@ -23,8 +23,6 @@ export default function MessageSender() {
 
     if(!contact || loading) return <div>Loading</div>;
 
-    console.log('######', contact);
-
     return (
         <>
             <MessageTimeline contact={contact} />

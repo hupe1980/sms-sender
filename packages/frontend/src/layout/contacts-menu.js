@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { List, makeStyles } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { GET_LIST, useDataProvider, useVersion } from 'react-admin';
+import { useDataProvider, useVersion } from 'react-admin';
 
 import ContactListItem from './contact-list-item';
 
@@ -25,7 +25,7 @@ export default function ContactsMenu({ onListItemClick }) {
 
     useEffect(() => {
         const fetchContacts = async () => {
-            const { data } = await dataProvider(GET_LIST, 'contacts', {
+            const { data } = await dataProvider.getList('contacts', {
                 filter: {},
                 sort: { field: 'id', order: 'ASC' },
                 pagination: { page: 1, perPage: 50 },

@@ -1,28 +1,39 @@
-import { GET_LIST, GET_MANY_REFERENCE, CREATE } from 'ra-core';
-import dataProvider, {
-    buildDataRequest as defaultBuildDataRequest,
-    parseResponse as deffaultParseResponse
+import {
+    defaultResponseParser,
+    defaultRequestBuilder,
 } from 'ra-data-amplify-rest';
 
-export const parseResponse = (response, type, resource, params) => {
+defaultResponseParser.getList = response => {
     const { data, total } = response;
-
-    switch (type) {
-        case GET_LIST:
-        case GET_MANY_REFERENCE:
-            return {
-                data,
-                total,
-            };
-        default:
-            return deffaultParseResponse(response, type, resource, params);
-    }
+    return {
+        data,
+        total,
+    };
 };
 
-export const buildDataRequest = (type, resource, params) => {
-    console.log(type, resource, params);
-
-    return defaultBuildDataRequest(type, resource, params);
+defaultResponseParser.getManyReference = response => {
+    const { data, total } = response;
+    return {
+        data,
+        total,
+    };
 };
 
-export default dataProvider;
+defaultRequestBuilder.create = (resource, params) => {
+    console.log(resource, params);
+    const init = {
+        body: params.data,
+    };
+
+    const path = `/${resource}`;
+
+    return {
+        path,
+        init,
+    };
+}
+
+export {
+    defaultResponseParser as customResponseParser,
+    defaultRequestBuilder as customRequestBuilder,
+};
