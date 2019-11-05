@@ -43,5 +43,7 @@ function App() {
 
 export default withAuthenticator(App, {
     hide: [Greetings],
+    hideSignUp: true,
+    hideForgotPassword: true,
     theme,
 });
