@@ -18,7 +18,7 @@ Resources:
   StaticWebsiteBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: !Sub "waydo-slicepay-website-${Stage}"
+      BucketName: !Sub "sms-sender-website-${Stage}"
       WebsiteConfiguration:
         ErrorDocument: index.html
         IndexDocument: index.html
