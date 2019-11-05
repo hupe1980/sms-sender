@@ -24,7 +24,8 @@
     "offline": "cross-env REACT_APP_API_URL=http://localhost:4000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "echo 'No linter'"
   },
   "browserslist": {
     "production": [

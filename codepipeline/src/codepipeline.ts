@@ -1,5 +1,4 @@
 import { Construct, SecretValue } from '@aws-cdk/core';
-import { IRepository } from '@aws-cdk/aws-codecommit';
 import { Pipeline, Artifact } from '@aws-cdk/aws-codepipeline';
 import {
   GitHubSourceAction,
@@ -9,8 +8,7 @@ import {
 import {
   PipelineProject,
   BuildSpec,
-  LinuxBuildImage,
-  BuildEnvironmentVariableType
+  LinuxBuildImage
 } from '@aws-cdk/aws-codebuild';
 import { PolicyStatement } from '@aws-cdk/aws-iam';
 
@@ -49,17 +47,9 @@ export class Codepipeline extends Construct {
       input: sourceArtifact
     });
 
-    const bucketStackName = `${projectName}-bucket-stack`;
-
     const deployProject = new PipelineProject(this, 'DeployProject', {
       environment: {
         buildImage: LinuxBuildImage.STANDARD_2_0
-      },
-      environmentVariables: {
-        BUCKET_STACK_NAME: {
-          value: bucketStackName,
-          type: BuildEnvironmentVariableType.PLAINTEXT
-        }
       },
       buildSpec: BuildSpec.fromSourceFilename('buildspecs/deploy.yml')
     });

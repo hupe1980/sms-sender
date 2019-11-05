@@ -9,7 +9,8 @@
     "watch": "tsc -w",
     "test": "jest",
     "deploy": "cdk deploy",
-    "synth": "cdk synth"
+    "synth": "cdk synth",
+    "lint": "echo 'No linter'"
   },
   "devDependencies": {
     "@aws-cdk/assert": "^1.15.0",

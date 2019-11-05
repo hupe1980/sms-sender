@@ -4,7 +4,8 @@
   "private": true,
   "description": "",
   "scripts": {
-    "offline": "sls offline start"
+    "offline": "sls offline start",
+    "lint": "echo 'No linter'"
   },
   "devDependencies": {
     "aws-amplify-serverless-plugin": "^1.4.1",
