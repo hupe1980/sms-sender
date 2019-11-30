@@ -19,11 +19,11 @@ phases:
     commands:
       - echo Deploy started on `date`
       - npm run deploy:backend
-      - echo aws --region us-east-1 cloudformation deploy --no-fail-on-empty-changeset --stack-name ${SECURITY_HEADERS_STACKNAME} --template-file packages/frontend/templates/security-header.yml --parameter-overrides WebsiteDomain=${WEBSITE_DOMAIN} Stage=${STAGE} --capabilities CAPABILITY_NAMED_IAM
-      - aws --region us-east-1 cloudformation deploy --no-fail-on-empty-changeset --stack-name ${SECURITY_HEADERS_STACKNAME} --template-file packages/frontend/templates/security-header.yml --parameter-overrides  WebsiteDomain=${WEBSITE_DOMAIN} Stage=${STAGE} --capabilities CAPABILITY_NAMED_IAM
+      - echo aws --region us-east-1 cloudformation deploy --no-fail-on-empty-changeset --stack-name ${SECURITY_HEADERS_STACKNAME} --template-file frontend/templates/security-header.yml --parameter-overrides WebsiteDomain=${WEBSITE_DOMAIN} Stage=${STAGE} --capabilities CAPABILITY_NAMED_IAM
+      - aws --region us-east-1 cloudformation deploy --no-fail-on-empty-changeset --stack-name ${SECURITY_HEADERS_STACKNAME} --template-file frontend/templates/security-header.yml --parameter-overrides  WebsiteDomain=${WEBSITE_DOMAIN} Stage=${STAGE} --capabilities CAPABILITY_NAMED_IAM
       - SECURITY_HEADER_LAMBDA_ARN_VERSION=$(aws --region us-east-1 cloudformation describe-stacks --stack-name ${SECURITY_HEADERS_STACKNAME} --query "Stacks[0].Outputs[?OutputKey=='SecurityHeaderLambdaArnVersion'].OutputValue" --output text)
-      - echo aws cloudformation deploy --no-fail-on-empty-changeset --stack-name ${STATIC_WEBSITE_STACKNAME} --template-file packages/frontend/templates/static-website.yml --parameter-overrides Stage=${STAGE} SecurityHeaderLambdaArnVersion=${SECURITY_HEADER_LAMBDA_ARN_VERSION}
-      - aws cloudformation deploy --no-fail-on-empty-changeset --stack-name ${STATIC_WEBSITE_STACKNAME} --template-file packages/frontend/templates/static-website.yml --parameter-overrides Stage=${STAGE} SecurityHeaderLambdaArnVersion=${SECURITY_HEADER_LAMBDA_ARN_VERSION}
+      - echo aws cloudformation deploy --no-fail-on-empty-changeset --stack-name ${STATIC_WEBSITE_STACKNAME} --template-file frontend/templates/static-website.yml --parameter-overrides Stage=${STAGE} SecurityHeaderLambdaArnVersion=${SECURITY_HEADER_LAMBDA_ARN_VERSION}
+      - aws cloudformation deploy --no-fail-on-empty-changeset --stack-name ${STATIC_WEBSITE_STACKNAME} --template-file frontend/templates/static-website.yml --parameter-overrides Stage=${STAGE} SecurityHeaderLambdaArnVersion=${SECURITY_HEADER_LAMBDA_ARN_VERSION}
       - WEBSITE_BUCKET=$(aws cloudformation describe-stacks --stack-name ${STATIC_WEBSITE_STACKNAME} --query "Stacks[0].Outputs[?OutputKey=='WebsiteBucketName'].OutputValue" --output text)
       - WEBSITE_DISTRIBUTION=$(aws cloudformation describe-stacks --stack-name ${STATIC_WEBSITE_STACKNAME} --query "Stacks[0].Outputs[?OutputKey=='WebsiteDistribution'].OutputValue" --output text)
       - npm run build:frontend
