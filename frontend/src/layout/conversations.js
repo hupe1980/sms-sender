@@ -8,7 +8,7 @@ import {
     makeStyles,
 } from '@material-ui/core';
 import { useVersion, useDataProvider } from 'react-admin';
-import { useAuthContext } from 'amplify-material-ui';
+import { useAuthContext } from 'amplify-auth-hooks';
 
 import SearchBar from './search-bar';
 import { changeConversation } from './actions';

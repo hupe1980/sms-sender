@@ -1,14 +1,12 @@
 import React from 'react';
-import {
-    Button,
-    Box,
-    Typography,
-    makeStyles,
-} from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
 import { useCreate, useRefresh } from 'react-admin';
 import { Formik, Field, Form } from 'formik';
 import { TextField } from 'formik-material-ui';
-import { useAuthContext } from 'amplify-material-ui';
+import { useAuthContext } from 'amplify-auth-hooks';
 
 const useStyles = makeStyles(theme => ({
     form: {
@@ -47,10 +45,9 @@ export default function MessageForm({ contact }) {
     return (
         <Formik
             initialValues={{ message: '' }}
-            onSubmit={async ({ message }, { setSubmitting, resetForm }) => {
+            onSubmit={async ({ message }, { resetForm }) => {
                 await submit(message);
                 resetForm();
-                setSubmitting(false);
             }}
         >
             {({ submitForm, isValid, values }) => (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ListItem, ListItemText } from '@material-ui/core';
 import { useUpdate, useRefresh } from 'react-admin';
-import { useAuthContext } from 'amplify-material-ui';
+import { useAuthContext } from 'amplify-auth-hooks';
 
 export default function ContactListItem({ contact, onClick }) {
     const refresh = useRefresh();

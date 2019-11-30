@@ -13,21 +13,21 @@
     "lint": "echo 'No linter'"
   },
   "devDependencies": {
-    "@aws-cdk/assert": "^1.15.0",
-    "@types/jest": "^24.0.18",
+    "@aws-cdk/assert": "^1.18.0",
+    "@types/jest": "^24.0.23",
+    "aws-cdk": "^1.18.0",
     "jest": "^24.9.0",
-    "ts-jest": "^24.0.2",
-    "aws-cdk": "^1.15.0",
-    "ts-node": "^8.1.0",
-    "typescript": "~3.6.2"
+    "ts-jest": "^24.2.0",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.2"
   },
   "dependencies": {
-    "@aws-cdk/aws-codebuild": "^1.15.0",
-    "@aws-cdk/aws-codecommit": "^1.15.0",
-    "@aws-cdk/aws-codepipeline": "^1.15.0",
-    "@aws-cdk/aws-codepipeline-actions": "^1.15.0",
-    "@aws-cdk/aws-iam": "^1.15.0",
-    "@aws-cdk/core": "^1.15.0",
+    "@aws-cdk/aws-codebuild": "^1.18.0",
+    "@aws-cdk/aws-codecommit": "^1.18.0",
+    "@aws-cdk/aws-codepipeline": "^1.18.0",
+    "@aws-cdk/aws-codepipeline-actions": "^1.18.0",
+    "@aws-cdk/aws-iam": "^1.18.0",
+    "@aws-cdk/core": "^1.18.0",
     "source-map-support": "^0.5.9"
   }
 }

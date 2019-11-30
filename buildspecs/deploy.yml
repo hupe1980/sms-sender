@@ -29,7 +29,7 @@ phases:
       - npm run build:frontend
   post_build:
     commands:
-      - aws s3 sync packages/frontend/build/ s3://${WEBSITE_BUCKET} --delete
+      - aws s3 sync frontend/build/ s3://${WEBSITE_BUCKET} --delete
       - aws cloudfront create-invalidation --distribution-id ${WEBSITE_DISTRIBUTION} --paths /index.html
       - echo Deploy completed on `date`
     

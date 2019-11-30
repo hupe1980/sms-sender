@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function Timeline({ children, orientation = 'left' }) {
+export default function Timeline({ children }) {
     const classes = useStyles();
 
     return <List className={classes.container}>{children}</List>;

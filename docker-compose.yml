@@ -12,10 +12,9 @@ services:
   backend:
     build:
       dockerfile: Dockerfile
-      context: ./packages/backend
+      context: ./backend
     volumes:
-      - ~/.aws:/root/.aws
-      - ./packages/backend:/app
+      - ./backend:/app
       - ./wait-for.sh:/opt/wait-for.sh
     ports:
       - '4000:4000'
@@ -26,9 +25,9 @@ services:
   frontend:
     build:
       dockerfile: Dockerfile
-      context: ./packages/frontend
+      context: ./frontend
     volumes:
       - /app/node_modules
-      - ./packages/frontend:/app
+      - ./frontend:/app
     ports:
       - '3000:3000'
