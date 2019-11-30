@@ -21,7 +21,7 @@ export default function MessageSender() {
 
     const { data: contact, loading } = useGetOne('contacts', conversation);
 
-    if(!contact || loading) return <div>Loading</div>;
+    if (!contact || loading) return <div>Loading</div>;
 
     return (
         <>

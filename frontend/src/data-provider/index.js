@@ -31,7 +31,7 @@ defaultRequestBuilder.create = (resource, params) => {
         path,
         init,
     };
-}
+};
 
 export {
     defaultResponseParser as customResponseParser,

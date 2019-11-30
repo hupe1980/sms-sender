@@ -25,12 +25,12 @@ export default function MessageForm({ contact }) {
     const [create] = useCreate('messages');
     const { authData } = useAuthContext();
 
-    const submit = async (message) => {
+    const submit = async message => {
         const { contactId, name, phone } = contact;
         const from = authData.username;
 
-        const data = { message, contactId, name, phone, from }; 
-        
+        const data = { message, contactId, name, phone, from };
+
         await create(
             { payload: { data } },
             {

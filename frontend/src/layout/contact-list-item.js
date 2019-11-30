@@ -5,17 +5,17 @@ import { useAuthContext } from 'amplify-auth-hooks';
 
 export default function ContactListItem({ contact, onClick }) {
     const refresh = useRefresh();
-     const { authData } = useAuthContext();
+    const { authData } = useAuthContext();
 
     const conversations = new Set(contact.conversations || []);
-    conversations.add(authData.username); 
+    conversations.add(authData.username);
     const diff = { ...contact, conversations: Array.from(conversations) };
-    
+
     const [update] = useUpdate('contacts', contact.id, diff, contact, {
         onSuccess: () => {
             refresh();
             onClick();
-        }
+        },
     });
 
     return (
@@ -24,4 +24,3 @@ export default function ContactListItem({ contact, onClick }) {
         </ListItem>
     );
 }
-

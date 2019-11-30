@@ -24,7 +24,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "echo 'No linter'"
+    "lint": "eslint . --report-unused-disable-directives"
   },
   "browserslist": {
     "production": [

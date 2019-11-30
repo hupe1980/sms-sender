@@ -6,6 +6,7 @@ phases:
       nodejs: 10
     commands:
       - echo Install started on `date`
+      - npm audit --audit-level=high
       - npm ci
       - npm run postinstall
   build:

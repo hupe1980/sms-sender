@@ -29,19 +29,18 @@ export default function Conversations(props) {
 
     useEffect(() => {
         const fetchConversations = async () => {
-
             const ret = await dataProvider.getList('contacts', {
                 filter: { conversation: authData.username },
                 sort: { field: 'name', order: 'DESC' },
                 pagination: { page: 1, perPage: 50 },
             });
-            if(!ret) return;
+            if (!ret) return;
             const { data } = ret;
             setConversations(data);
         };
 
         fetchConversations();
-    }, [dataProvider, version]);
+    }, [authData.username, dataProvider, version]);
 
     return (
         <>
