@@ -16,7 +16,13 @@ const createMessage = async event => {
 
   const params = {
     Message: body.message,
-    PhoneNumber: body.phone
+    PhoneNumber: body.phone,
+    MessageAttributes: {
+      'AWS.SNS.SMS.SMSType': {
+        DataType: 'String',
+        StringValue: 'Transactional'
+      }
+    }
   };
 
   const { MessageId: messageId } = await sns.publish(params);
