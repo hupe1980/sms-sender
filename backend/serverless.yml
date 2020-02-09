@@ -40,7 +40,7 @@ provider:
     - Effect: Allow
       Action: 
         - sns:Publish
-      Resource: *         
+      Resource: "*"         
 
 custom:
   prefix: ${self:provider.stage}-${self:service}
