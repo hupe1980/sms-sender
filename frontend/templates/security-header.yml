@@ -59,7 +59,7 @@ Resources:
       Handler: index.handler
       MemorySize: 128
       Role: !GetAtt LambdaFunctionExecutionRole.Arn
-      Runtime: nodejs10x
+      Runtime: nodejs10.x
 
   LambdaFunctionVersion:
     Type: AWS::Lambda::Version
