@@ -13,17 +13,17 @@ const getContact = async event => {
 
   const contactId = event.pathParameters.contactId;
 
-   const result = await dynamoDb.get({
-     TableName: tableName,
-     Key: {
-       contactId
-     }
-   });
+  const result = await dynamoDb.get({
+    TableName: tableName,
+    Key: {
+      contactId
+    }
+  });
 
-   const data = {
-     ...result.Item,
-     id: result.Item.contactId
-   };
+  const data = {
+    ...result.Item,
+    id: result.Item.contactId
+  };
 
   return {
     statusCode: 200,

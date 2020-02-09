@@ -16,6 +16,7 @@ services:
     volumes:
       - ./backend:/app
       - ./wait-for.sh:/opt/wait-for.sh
+      - /app/node_modules
     ports:
       - '4000:4000'
     depends_on:
@@ -27,7 +28,7 @@ services:
       dockerfile: Dockerfile
       context: ./frontend
     volumes:
-      - /app/node_modules
       - ./frontend:/app
+      - /app/node_modules
     ports:
       - '3000:3000'

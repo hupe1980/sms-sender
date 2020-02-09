@@ -17,7 +17,7 @@ import Header from './header';
 
 import Conversations from './conversations';
 import ContactsMenu from './contacts-menu';
-import SearchBar from './search-bar';
+
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -128,14 +128,10 @@ export default function Layout({ children }) {
             >
                 <Typography variant="h6">Kontakte</Typography>
             </Box>
-            <Divider />
-            <SearchBar
-                className={classes.searchBar}
-                variant="outlined"
-                placeholder="Namen eingeben"
-            />
-            <Divider />
-            <ContactsMenu onListItemClick={handleDrawerToggle} />
+            <Box>
+                <Divider />
+                <ContactsMenu onListItemClick={handleDrawerToggle} />
+            </Box>
         </>
     );
 

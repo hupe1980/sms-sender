@@ -1,8 +1,13 @@
-import { CHANGE_CONVERSATION } from './layout/actions';
+import { CHANGE_CONVERSATION, REMOVE_CONVERSATION } from './actions';
 
 export default (previousState = null, { type, payload }) => {
-    if (type === CHANGE_CONVERSATION) {
-        return payload;
+
+    switch (type) {
+        case CHANGE_CONVERSATION:
+            return payload;
+        case REMOVE_CONVERSATION:
+            return null;
+        default:
+            return previousState;
     }
-    return previousState;
 };

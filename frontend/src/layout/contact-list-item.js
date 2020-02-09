@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { ListItem, ListItemText } from '@material-ui/core';
 import { useUpdate, useRefresh } from 'react-admin';
 import { useAuthContext } from 'amplify-auth-hooks';
@@ -6,6 +7,7 @@ import { useAuthContext } from 'amplify-auth-hooks';
 export default function ContactListItem({ contact, onClick }) {
     const refresh = useRefresh();
     const { authData } = useAuthContext();
+     const history = useHistory(); 
 
     const conversations = new Set(contact.conversations || []);
     conversations.add(authData.username);
@@ -15,6 +17,7 @@ export default function ContactListItem({ contact, onClick }) {
         onSuccess: () => {
             refresh();
             onClick();
+            history.push('/');
         },
     });
 
@@ -23,4 +26,4 @@ export default function ContactListItem({ contact, onClick }) {
             <ListItemText primary={contact.name} secondary={contact.phone} />
         </ListItem>
     );
-}
+} 

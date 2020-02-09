@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core';
 import { useSelector } from 'react-redux';
-import { useGetOne } from 'react-admin';
+import { useDataProvider } from 'react-admin';
 
 import MessageForm from './message-form';
 import MessageTimeline from './message-timeline';
@@ -18,10 +18,26 @@ const useStyles = makeStyles(theme => ({
 export default function MessageSender() {
     const classes = useStyles();
     const conversation = useSelector(state => state.conversation);
+    const dataProvider = useDataProvider();
+    const [contact, setContact] = useState(null);
 
-    const { data: contact, loading } = useGetOne('contacts', conversation);
+    useEffect(() => {
+        const fetchConversations = async () => {
+            if (!conversation) {
+                setContact(null);
+                return;
+            }
 
-    if (!contact || loading) return <div>Loading</div>;
+            const { data } = await dataProvider.getOne('contacts', {
+                id: conversation,
+            });
+            setContact(data);
+        };
+
+        fetchConversations();
+    }, [conversation, dataProvider]);
+
+    if (!contact) return <div>Loading</div>;
 
     return (
         <>

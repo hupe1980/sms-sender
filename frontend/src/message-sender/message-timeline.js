@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import {
     Card,
     CardHeader,
@@ -13,8 +14,15 @@ import { red } from '@material-ui/core/colors';
 import TextsmsOutlinedIcon from '@material-ui/icons/TextsmsOutlined';
 //import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { useVersion, useDataProvider } from 'react-admin';
+import {
+    useVersion,
+    useDataProvider,
+    useUpdate,
+    useRefresh,
+} from 'react-admin';
+import { useAuthContext } from 'amplify-auth-hooks';
 
+import { removeConversation } from '../actions';
 import Timeline from './timeline';
 import TimelineEvent from './timeline-event';
 
@@ -42,10 +50,26 @@ export default function MessageTimeline({ contact }) {
     const open = Boolean(anchorEl);
     const [messages, setMessages] = useState([]);
     const version = useVersion();
+    const refresh = useRefresh();
     const dataProvider = useDataProvider();
+    const { authData } = useAuthContext();
+    const dispatch = useDispatch();
 
     const messagesEndRef = useRef(null);
-    const { contactId, name, phone } = contact;
+    const { contactId, name, phone, conversations } = contact;
+
+    const newConversation = conversations.filter(
+        name => name !== authData.username,
+    );
+
+    const diff = { ...contact, conversations: newConversation };
+
+    const [update] = useUpdate('contacts', contact.id, diff, contact, {
+        onSuccess: () => {
+            dispatch(removeConversation());
+            refresh();
+        },
+    });
 
     useEffect(() => {
         messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -70,6 +94,11 @@ export default function MessageTimeline({ contact }) {
 
     const handleClose = () => {
         setAnchorEl(null);
+    };
+
+    const handleRemoveButtonClick = () => {
+        handleClose();
+        update();
     };
 
     const renderEvents = () =>
@@ -122,14 +151,13 @@ export default function MessageTimeline({ contact }) {
                 PaperProps={{
                     style: {
                         maxHeight: ITEM_HEIGHT * 4.5,
-                        width: 200,
+                        width: 310,
                     },
                 }}
             >
-                <MenuItem onClick={handleClose}>
-                    Gesrächsverlauf löschen
+                <MenuItem onClick={handleRemoveButtonClick}>
+                    Gesprächsverlauf aus Liste entfernen
                 </MenuItem>
-                ))}
             </Menu>
         </>
     );

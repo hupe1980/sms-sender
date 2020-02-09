@@ -32,7 +32,15 @@ provider:
     - Effect: Allow
       Action:
         - dynamodb:Query
-      Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.MESSAGES_TABLE}/index/${self:provider.environment.CONTACT_ID_INDEX}  
+      Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.MESSAGES_TABLE}/index/${self:provider.environment.CONTACT_ID_INDEX}
+    - Effect: Deny
+      Action:
+        - sns:Publish
+      Resource: arn:aws:sns:*:*:*
+    - Effect: Allow
+      Action: 
+        - sns:Publish
+      Resource: *         
 
 custom:
   prefix: ${self:provider.stage}-${self:service}

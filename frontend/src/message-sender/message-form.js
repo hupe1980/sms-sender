@@ -44,7 +44,7 @@ export default function MessageForm({ contact }) {
 
     return (
         <Formik
-            initialValues={{ message: '' }}
+            initialValues={{ message: 'NEUSTART' }}
             onSubmit={async ({ message }, { resetForm }) => {
                 await submit(message);
                 resetForm();

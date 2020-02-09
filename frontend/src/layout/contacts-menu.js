@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { List, makeStyles } from '@material-ui/core';
+import  Divider from '@material-ui/core/Divider';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { useDataProvider, useVersion } from 'react-admin';
 
+import SearchBar from './search-bar';
 import ContactListItem from './contact-list-item';
 
 const useStyles = makeStyles(theme => ({
@@ -22,6 +24,7 @@ export default function ContactsMenu({ onListItemClick }) {
     const dataProvider = useDataProvider();
 
     const [contacts, setContacts] = useState(null);
+    const [filter, setFilter] = useState('');
 
     useEffect(() => {
         const fetchContacts = async () => {
@@ -36,7 +39,7 @@ export default function ContactsMenu({ onListItemClick }) {
     }, [dataProvider, version]);
 
     const renderListItems = () =>
-        contacts.map(contact => (
+        contacts.filter(({name})=> name.startsWith(filter)).map(contact => (
             <ContactListItem
                 contact={contact}
                 key={contact.id}
@@ -46,5 +49,16 @@ export default function ContactsMenu({ onListItemClick }) {
 
     if (!contacts) return <CircularProgress />;
 
-    return <List className={classes.list}>{renderListItems()}</List>;
+    return (
+        <>
+            <SearchBar
+                className={classes.searchBar}
+                variant="outlined"
+                placeholder="Namen eingeben"
+                onSearch={setFilter}
+            />
+            <Divider />
+            <List className={classes.list}>{renderListItems()}</List>
+        </>
+    );
 }
