@@ -18,7 +18,6 @@ import Header from './header';
 import Conversations from './conversations';
 import ContactsMenu from './contacts-menu';
 
-
 const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',

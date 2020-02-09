@@ -1,5 +1,5 @@
 import React from 'react';
-import { useInput} from 'react-admin';
+import { useInput } from 'react-admin';
 import { makeStyles } from '@material-ui/core';
 import MuiPhoneNumber from 'material-ui-phone-number';
 
@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const PhoneFieldInput = (props) => {
+const PhoneFieldInput = props => {
     const {
         input: { value, name, onChange },
         meta: { touched, error },
@@ -17,7 +17,7 @@ const PhoneFieldInput = (props) => {
         ...rest
     } = useInput(props);
     const classes = useStyles();
-    
+
     return (
         <div className={classes.telephone}>
             <MuiPhoneNumber

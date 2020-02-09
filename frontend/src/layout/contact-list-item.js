@@ -7,7 +7,7 @@ import { useAuthContext } from 'amplify-auth-hooks';
 export default function ContactListItem({ contact, onClick }) {
     const refresh = useRefresh();
     const { authData } = useAuthContext();
-     const history = useHistory(); 
+    const history = useHistory();
 
     const conversations = new Set(contact.conversations || []);
     conversations.add(authData.username);
@@ -26,4 +26,4 @@ export default function ContactListItem({ contact, onClick }) {
             <ListItemText primary={contact.name} secondary={contact.phone} />
         </ListItem>
     );
-} 
+}

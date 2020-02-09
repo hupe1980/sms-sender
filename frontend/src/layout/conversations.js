@@ -13,7 +13,7 @@ export default function Conversations(props) {
     const dataProvider = useDataProvider();
     const dispatch = useDispatch();
     const { authData } = useAuthContext();
-    const history = useHistory(); 
+    const history = useHistory();
 
     useEffect(() => {
         const fetchConversations = async () => {

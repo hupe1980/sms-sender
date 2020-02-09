@@ -3,27 +3,27 @@ import { InputAdornment, IconButton, TextField } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
 export default function SearchBar(props) {
-    const { onChange, onSearch, ...rest} = props;
+    const { onChange, onSearch, ...rest } = props;
     const [value, setValue] = useState('');
 
-    const handleChange = (e) => {
+    const handleChange = e => {
         setValue(e.target.value);
-        if(onChange) {
+        if (onChange) {
             onChange(e.target.value);
         }
     };
 
     const handleSearch = () => {
-        if(onSearch) {
+        if (onSearch) {
             onSearch(value);
         }
-    }
+    };
 
-    const handleKeyUp = (e) => {
+    const handleKeyUp = e => {
         if (e.charCode === 13 || e.key === 'Enter') {
             handleSearch();
-        } 
-    }
+        }
+    };
 
     return (
         <TextField

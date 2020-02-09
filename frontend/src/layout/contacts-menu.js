@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { List, makeStyles } from '@material-ui/core';
-import  Divider from '@material-ui/core/Divider';
+import Divider from '@material-ui/core/Divider';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { useDataProvider, useVersion } from 'react-admin';
 
@@ -39,13 +39,15 @@ export default function ContactsMenu({ onListItemClick }) {
     }, [dataProvider, version]);
 
     const renderListItems = () =>
-        contacts.filter(({name})=> name.startsWith(filter)).map(contact => (
-            <ContactListItem
-                contact={contact}
-                key={contact.id}
-                onClick={onListItemClick}
-            />
-        ));
+        contacts
+            .filter(({ name }) => name.startsWith(filter))
+            .map(contact => (
+                <ContactListItem
+                    contact={contact}
+                    key={contact.id}
+                    onClick={onListItemClick}
+                />
+            ));
 
     if (!contacts) return <CircularProgress />;
 
