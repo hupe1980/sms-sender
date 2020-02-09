@@ -19,7 +19,7 @@ const createMessage = async event => {
     PhoneNumber: body.phone
   };
 
-  const { messageId } = await sns.publish(params);
+  const { MessageId: messageId } = await sns.publish(params);
 
   const item = {
     messageId,
