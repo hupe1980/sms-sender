@@ -19,6 +19,8 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
+const DEFAULT_MESSAGE = '#eweilm:REBOOT';
+
 export default function MessageForm({ contact }) {
     const classes = useStyles();
     const refresh = useRefresh();
@@ -44,7 +46,7 @@ export default function MessageForm({ contact }) {
 
     return (
         <Formik
-            initialValues={{ message: 'NEUSTART' }}
+            initialValues={{ message: DEFAULT_MESSAGE }}
             onSubmit={async ({ message }, { resetForm }) => {
                 await submit(message);
                 resetForm();
