@@ -16,7 +16,7 @@ export default function ContactListItem({ contact, onClick }) {
         onSuccess: () => {
             refresh();
             onClick();
-            redirect('list', '/');
+            redirect('/');
         },
     });
 
