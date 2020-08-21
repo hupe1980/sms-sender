@@ -7,7 +7,7 @@ import { useDataProvider, useVersion } from 'react-admin';
 import SearchBar from './search-bar';
 import ContactListItem from './contact-list-item';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     list: {
         width: '100%',
         maxWidth: 360,
@@ -41,7 +41,7 @@ export default function ContactsMenu({ onListItemClick }) {
     const renderListItems = () =>
         contacts
             .filter(({ name }) => name.startsWith(filter))
-            .map(contact => (
+            .map((contact) => (
                 <ContactListItem
                     contact={contact}
                     key={contact.id}

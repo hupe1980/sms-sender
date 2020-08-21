@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles, Typography, ListItem } from '@material-ui/core';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     event: {
         position: 'relative',
         margin: '10px 0',

@@ -3,13 +3,13 @@ import { useInput } from 'react-admin';
 import { makeStyles } from '@material-ui/core';
 import MuiPhoneNumber from 'material-ui-phone-number';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     telephone: {
         marginTop: 16,
     },
 }));
 
-const PhoneFieldInput = props => {
+const PhoneFieldInput = (props) => {
     const {
         input: { value, name, onChange },
         meta: { touched, error },

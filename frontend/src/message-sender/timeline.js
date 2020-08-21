@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles, List } from '@material-ui/core';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     container: {
         position: 'relative',
         margin: theme.spacing(1),

@@ -6,7 +6,7 @@ import { useDataProvider } from 'react-admin';
 import MessageForm from './message-form';
 import MessageTimeline from './message-timeline';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     footer: {
         padding: theme.spacing(2),
         marginTop: theme.spacing(2),
@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function MessageSender() {
     const classes = useStyles();
-    const conversation = useSelector(state => state.conversation);
+    const conversation = useSelector((state) => state.conversation);
     const dataProvider = useDataProvider();
     const [contact, setContact] = useState(null);
 

@@ -28,7 +28,7 @@ import TimelineEvent from './timeline-event';
 
 const ITEM_HEIGHT = 48;
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     avatar: {
         backgroundColor: red[500],
     },
@@ -59,7 +59,7 @@ export default function MessageTimeline({ contact }) {
     const { contactId, name, phone, conversations } = contact;
 
     const newConversation = conversations.filter(
-        name => name !== authData.username,
+        (name) => name !== authData.username,
     );
 
     const diff = { ...contact, conversations: newConversation };
@@ -88,7 +88,7 @@ export default function MessageTimeline({ contact }) {
         fetchConversations();
     }, [dataProvider, version, contactId]);
 
-    const handleClick = event => {
+    const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
 

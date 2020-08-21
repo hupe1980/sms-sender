@@ -12,7 +12,7 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     appBar: {
         position: 'fixed',
         [theme.breakpoints.up('sm')]: {

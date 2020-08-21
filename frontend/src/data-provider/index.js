@@ -3,7 +3,7 @@ import {
     defaultRequestBuilder,
 } from 'ra-data-amplify-rest';
 
-defaultResponseParser.getList = response => {
+defaultResponseParser.getList = (response) => {
     const { data, total } = response;
     return {
         data,
@@ -11,7 +11,7 @@ defaultResponseParser.getList = response => {
     };
 };
 
-defaultResponseParser.getManyReference = response => {
+defaultResponseParser.getManyReference = (response) => {
     const { data, total } = response;
     return {
         data,

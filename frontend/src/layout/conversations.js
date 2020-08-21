@@ -29,7 +29,7 @@ export default function Conversations(props) {
         fetchConversations();
     }, [authData.username, dataProvider, version]);
 
-    const handleClick = id => {
+    const handleClick = (id) => {
         dispatch(changeConversation(id));
         redirect('/');
     };

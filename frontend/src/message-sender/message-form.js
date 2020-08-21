@@ -8,7 +8,7 @@ import { Formik, Field, Form } from 'formik';
 import { TextField } from 'formik-material-ui';
 import { useAuthContext } from 'amplify-auth-hooks';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     form: {
         width: '100%', // Fix IE 11 issue.
         marginTop: theme.spacing(1),
@@ -27,7 +27,7 @@ export default function MessageForm({ contact }) {
     const [create] = useCreate('messages');
     const { authData } = useAuthContext();
 
-    const submit = async message => {
+    const submit = async (message) => {
         const { contactId, name, phone } = contact;
         const from = authData.username;
 

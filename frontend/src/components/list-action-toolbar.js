@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core';
 
 import { EditButton, ShowButton } from 'react-admin';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     toolbar: {
         //alignItems: 'center',
         display: 'flex',
@@ -20,7 +20,7 @@ export default function ListActionToolbar(props) {
         <div className={classes.toolbar}>
             <EditButton {...rest} />
             <ShowButton {...rest} />
-            {Children.map(children, button => cloneElement(button, rest))}
+            {Children.map(children, (button) => cloneElement(button, rest))}
         </div>
     );
 }
