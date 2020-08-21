@@ -10,14 +10,14 @@
   },
   "devDependencies": {
     "aws-amplify-serverless-plugin": "^1.4.1",
-    "aws-sdk": "^2.614.0",
-    "serverless": "^1.63.0",
+    "aws-sdk": "^2.738.0",
+    "serverless": "^1.79.0",
     "serverless-dynamodb-local": "^0.2.39",
-    "serverless-offline": "^5.12.1"
+    "serverless-offline": "^6.5.0"
   },
   "dependencies": {
-    "middy": "^0.33.2",
-    "uuid": "^3.4.0",
-    "winston": "^3.2.1"
+    "middy": "^0.36.0",
+    "uuid": "^8.3.0",
+    "winston": "^3.3.3"
   }
 }

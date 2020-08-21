@@ -1,16 +1,8 @@
-import { Construct, SecretValue } from '@aws-cdk/core';
+import { PipelineProject, BuildSpec, LinuxBuildImage } from '@aws-cdk/aws-codebuild';
 import { Pipeline, Artifact } from '@aws-cdk/aws-codepipeline';
-import {
-  GitHubSourceAction,
-  CodeBuildAction,
-  GitHubTrigger
-} from '@aws-cdk/aws-codepipeline-actions';
-import {
-  PipelineProject,
-  BuildSpec,
-  LinuxBuildImage
-} from '@aws-cdk/aws-codebuild';
+import { GitHubSourceAction, CodeBuildAction, GitHubTrigger } from '@aws-cdk/aws-codepipeline-actions';
 import { PolicyStatement } from '@aws-cdk/aws-iam';
+import { Construct, SecretValue } from '@aws-cdk/core';
 
 export interface CodepipelineProps {
   projectName: string;
@@ -20,7 +12,7 @@ export class Codepipeline extends Construct {
   constructor(scope: Construct, id: string, props: CodepipelineProps) {
     super(scope, id);
 
-    const { projectName, } = props;
+    const { projectName } = props;
 
     const sourceArtifact = new Artifact();
 
@@ -31,40 +23,40 @@ export class Codepipeline extends Construct {
       oauthToken: SecretValue.secretsManager('my-github-token'),
       output: sourceArtifact,
       branch: 'master',
-      trigger: GitHubTrigger.WEBHOOK
+      trigger: GitHubTrigger.WEBHOOK,
     });
 
     const validationProject = new PipelineProject(this, 'ValidationProject', {
       environment: {
-        buildImage: LinuxBuildImage.STANDARD_2_0
+        buildImage: LinuxBuildImage.STANDARD_2_0,
       },
-      buildSpec: BuildSpec.fromSourceFilename('buildspecs/validation.yml')
+      buildSpec: BuildSpec.fromSourceFilename('buildspecs/validation.yml'),
     });
 
     const validationAction = new CodeBuildAction({
       actionName: 'ValidationAction',
       project: validationProject,
-      input: sourceArtifact
+      input: sourceArtifact,
     });
 
     const deployProject = new PipelineProject(this, 'DeployProject', {
       environment: {
-        buildImage: LinuxBuildImage.STANDARD_2_0
+        buildImage: LinuxBuildImage.STANDARD_2_0,
       },
-      buildSpec: BuildSpec.fromSourceFilename('buildspecs/deploy.yml')
+      buildSpec: BuildSpec.fromSourceFilename('buildspecs/deploy.yml'),
     });
 
     deployProject.addToRolePolicy(
       new PolicyStatement({
         actions: ['*'],
-        resources: ['*']
-      })
+        resources: ['*'],
+      }),
     );
 
     const deployAction = new CodeBuildAction({
       actionName: 'DeployAction',
       project: deployProject,
-      input: sourceArtifact
+      input: sourceArtifact,
     });
 
     new Pipeline(this, 'Pipeline', {
@@ -72,17 +64,17 @@ export class Codepipeline extends Construct {
       stages: [
         {
           stageName: 'Source',
-          actions: [sourceAction]
+          actions: [sourceAction],
         },
         {
           stageName: 'Validation',
-          actions: [validationAction]
+          actions: [validationAction],
         },
         {
           stageName: 'Deploy',
-          actions: [deployAction]
-        }
-      ]
+          actions: [deployAction],
+        },
+      ],
     });
   }
 }

@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "lerna bootstrap",
-    "all:outdated": "npm outdated; lerna exec --no-bail -- npm outdated",
-    "all:upgrade": "npm upgrade; lerna exec --no-bail -- npm upgrade",
+    "outdated:all": "npm outdated; lerna exec --no-bail -- npm outdated",
+    "upgrade:all": "npm upgrade; lerna exec --no-bail -- npm upgrade",
     "lint": "lerna exec --stream -- npm run lint",
     "deploy:backend": "lerna exec --scope sms-sender-backend -- npm run deploy",
     "build:frontend": "lerna exec --scope sms-sender-frontend -- npm run build"

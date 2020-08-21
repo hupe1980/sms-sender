@@ -24,6 +24,8 @@ services:
     command: ['/opt/wait-for.sh', 'localstack:4569', 'npm', 'run', 'offline']
     entrypoint: ['/bin/sh']
   frontend:
+    # https://github.com/facebook/create-react-app/issues/8688
+    stdin_open: true
     build:
       dockerfile: Dockerfile
       context: ./frontend

@@ -2,26 +2,9 @@
   "name": "sms-sender-frontend",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@material-ui/core": "^4.9.1",
-    "@material-ui/icons": "^4.9.1",
-    "amplify-auth-hooks": "^0.0.12",
-    "amplify-material-ui": "^0.0.45",
-    "aws-amplify": "^2.2.4",
-    "clsx": "^1.1.0",
-    "formik": "^2.1.4",
-    "formik-material-ui": "^1.0.2",
-    "history": "^4.10.1",
-    "material-ui-phone-number": "^2.2.5",
-    "ra-data-amplify-rest": "^0.0.24",
-    "react": "^16.12.0",
-    "react-admin": "^3.2.1",
-    "react-dom": "^16.12.0",
-    "react-router-dom": "^5.1.2"
-  },
   "scripts": {
     "start": "react-scripts start",
-    "offline": "cross-env REACT_APP_API_URL=http://localhost:4000 react-scripts start",
+    "offline": "cross-env REACT_APP_API_URL=http://localhost:4000/dev react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -39,11 +22,27 @@
       "last 1 safari version"
     ]
   },
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "amplify-auth-hooks": "^0.0.13",
+    "amplify-material-ui": "^0.0.46",
+    "aws-amplify": "^3.0.24",
+    "clsx": "^1.1.1",
+    "formik": "^2.1.5",
+    "formik-material-ui": "^2.0.1",
+    "history": "^5.0.0",
+    "material-ui-phone-number": "^2.2.6",
+    "ra-data-amplify-rest": "^0.0.25",
+    "react": "^16.13.1",
+    "react-admin": "^3.8.2",
+    "react-dom": "^16.13.1"
+  },
   "devDependencies": {
-    "cross-env": "^6.0.3",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-plugin-prettier": "^3.1.2",
-    "prettier": "^1.19.1",
-    "react-scripts": "3.2.0"
+    "cross-env": "^7.0.2",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.0.5",
+    "react-scripts": "^3.4.3"
   }
 }

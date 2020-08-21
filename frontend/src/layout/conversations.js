@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { List, ListItem, ListItemText } from '@material-ui/core';
-import { useVersion, useDataProvider } from 'react-admin';
+import { useVersion, useDataProvider, useRedirect } from 'react-admin';
 import { useAuthContext } from 'amplify-auth-hooks';
 
 import { changeConversation } from '../actions';
@@ -13,7 +12,7 @@ export default function Conversations(props) {
     const dataProvider = useDataProvider();
     const dispatch = useDispatch();
     const { authData } = useAuthContext();
-    const history = useHistory();
+    const redirect = useRedirect();
 
     useEffect(() => {
         const fetchConversations = async () => {
@@ -31,7 +30,7 @@ export default function Conversations(props) {
     }, [authData.username, dataProvider, version]);
 
     const handleClick = id => {
-        history.push('/');
+        redirect('/');
         dispatch(changeConversation(id));
     };
 

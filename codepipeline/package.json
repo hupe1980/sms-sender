@@ -1,33 +1,26 @@
 {
   "name": "codepipeline",
   "version": "0.1.0",
-  "bin": {
-    "codepipeline": "bin/codepipeline.js"
-  },
   "scripts": {
-    "build": "tsc",
-    "watch": "tsc -w",
-    "test": "jest",
+    "build": "cdkdx build",
+    "watch": "cdkdx build -w",
+    "test": "cdkdx test",
     "deploy": "cdk deploy",
     "synth": "cdk synth",
-    "lint": "echo 'No linter'"
-  },
-  "devDependencies": {
-    "@aws-cdk/assert": "^1.23.0",
-    "@types/jest": "^24.9.1",
-    "aws-cdk": "^1.23.0",
-    "jest": "^24.9.0",
-    "ts-jest": "^24.3.0",
-    "ts-node": "^8.6.2",
-    "typescript": "^3.7.5"
+    "lint": "cdkdx lint --report-unused-disable-directives"
   },
   "dependencies": {
-    "@aws-cdk/aws-codebuild": "^1.23.0",
-    "@aws-cdk/aws-codecommit": "^1.23.0",
-    "@aws-cdk/aws-codepipeline": "^1.23.0",
-    "@aws-cdk/aws-codepipeline-actions": "^1.23.0",
-    "@aws-cdk/aws-iam": "^1.23.0",
-    "@aws-cdk/core": "^1.23.0",
+    "@aws-cdk/aws-codebuild": "^1.60.0",
+    "@aws-cdk/aws-codecommit": "^1.60.0",
+    "@aws-cdk/aws-codepipeline": "^1.60.0",
+    "@aws-cdk/aws-codepipeline-actions": "^1.60.0",
+    "@aws-cdk/aws-iam": "^1.60.0",
+    "@aws-cdk/core": "^1.60.0",
     "source-map-support": "^0.5.9"
+  },
+  "devDependencies": {
+    "@aws-cdk/assert": "^1.60.0",
+    "aws-cdk": "^1.60.0",
+    "cdkdx": "^0.5.9"
   }
 }

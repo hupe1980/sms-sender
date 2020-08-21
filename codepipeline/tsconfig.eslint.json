@@ -22,14 +22,9 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "stripInternal": true,
-    "target": "ES2018",
-    "outDir": "./lib"
+    "target": "ES2018"
   },
-  "exclude": [
-    "src/lambdas",
-    "src/**/__tests__"
-  ],
   "include": [
-    "src"
+    "src/**/*.ts"
   ]
 }
