@@ -30,8 +30,8 @@ export default function Conversations(props) {
     }, [authData.username, dataProvider, version]);
 
     const handleClick = id => {
-        redirect('/');
         dispatch(changeConversation(id));
+        redirect('/');
     };
 
     return (
