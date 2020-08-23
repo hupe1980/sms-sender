@@ -40,7 +40,7 @@ export default function ContactsMenu({ onListItemClick }) {
 
     const renderListItems = () =>
         contacts
-            .filter(({ name }) => name.startsWith(filter))
+            .filter(({ name }) => (name ?? '').startsWith(filter))
             .map((contact) => (
                 <ContactListItem
                     contact={contact}
