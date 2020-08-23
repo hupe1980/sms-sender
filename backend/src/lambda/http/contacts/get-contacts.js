@@ -11,10 +11,14 @@ const tableName = process.env.CONTACTS_TABLE;
 const getContacts = async event => {
   logger.debug({ event });
 
+  const rawRange = event.queryStringParameters.range;
   const rawFilter = event.queryStringParameters.filter;
 
+  const range = JSON.parse(rawRange);
   const filter = JSON.parse(rawFilter);
-  const { conversation } = filter; 
+  const { conversation } = filter;
+  
+  console.log('### RANGE', range, '###');
 
   const params = conversation
     ? {
@@ -36,7 +40,7 @@ const getContacts = async event => {
   return {
     statusCode: 200,
     body: JSON.stringify({
-      data,
+      data: data.slice(range[0], range[1]+1),
       total: data.length
     })
   };

@@ -19,7 +19,7 @@ export default function Conversations(props) {
             const ret = await dataProvider.getList('contacts', {
                 filter: { conversation: authData.username },
                 sort: { field: 'name', order: 'DESC' },
-                pagination: { page: 1, perPage: 50 },
+                pagination: { page: 1, perPage: 100 },
             });
             if (!ret) return;
             const { data } = ret;
